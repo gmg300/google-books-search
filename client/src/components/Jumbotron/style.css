@@ -1,0 +1,9 @@
+.jumbotron {
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 8px gray;
+    box-shadow: 0 8px 10px -5px gray;
+    border-radius: 0rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem; 
+}

@@ -1,15 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.css";
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Search from './pages/Search.js';
+import Saved from './pages/Saved.js';
 
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <h2>Google Books Search</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+      <Router>
+        <Nav />
+        <Route exact path={['/', '/search']}>
+          <Search />
+        </Route>
+        <Route exact path='/saved'>
+          <Saved />
+        </Route>
+        <Footer />
+      </Router>
     </div>
   );
 }

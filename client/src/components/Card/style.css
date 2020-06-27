@@ -1,2 +1,24 @@
 .card {
+  max-height: 450px;  
+  box-shadow: 0 8px 10px 0px gray;
+  border: 10px solid #DB4437;
+  padding: 1rem;
+}
+
+.card-text {
+    max-height: 100px;
+    overflow: scroll;
+}
+
+.card-img {
+    max-height: 285px;
+    max-width: 150px;
+}
+
+.btn {
+  margin: 0.5rem;
+}
+
+.card-text {
+  overflow: scroll;
 }

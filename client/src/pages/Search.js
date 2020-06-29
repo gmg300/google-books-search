@@ -1,51 +1,82 @@
-import React, { useState, useEffect }  from "react";
-import API from '../utils/API';
+import React, { useState, useEffect } from "react";
+import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
-import Books from '../components/Books';
-import { Col, Row, Container } from '../components/Grid';
+import Book from "../components/Book";
+import { Col, Row, Container } from "../components/Grid";
+import NoResults from "../components/NoResults";
 
 function Search() {
-  const [books, setBooks] = useState([])
-  const [search, setSearch] = useState("")
+  const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    searchBooks()
-  }, [search])
-
-  function searchBooks() {
-    API.getBooks(search)
-      .then(res => {
-        setBooks(res.data.items)
-      })
-  }
+    API.searchBooks(search).then((res) => {
+      setBooks(res.data.items);
+    });
+  }, [search]);
 
   function handleInputChange(event) {
     const { value } = event.target;
-    setSearch(value)
-  };
+    setSearch(value);
+  }
 
   return (
-    <div>
+    <main>
       <Jumbotron />
       <Container>
-      <Row>
-        <Col>
-          <form>
-            <div class="form-group mb-4">
-              <input
-                id="exampleFormControlInput1"
-                type="email"
-                placeholder="Find books..."
-                class="form-control form-control-underlined"
-                onChange={handleInputChange}
-              />
-            </div>
-          </form>
-        </Col>
-      </Row>
-    </Container>
-    <Books books={books}/>
-    </div>
+        <Row>
+          <Col>
+            <form>
+              <div class="form-group mb-4">
+                <input
+                  id="exampleFormControlInput1"
+                  type="email"
+                  placeholder="Find books..."
+                  class="form-control form-control-underlined"
+                  onChange={handleInputChange}
+                />
+              </div>
+            </form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <NoResults books={books}/>
+          {books.map(({volumeInfo}, {id}) => {
+                    {/* Check Image */}
+                    let imageLink;
+                    if (!volumeInfo.imageLinks) {
+                        imageLink = "no image";
+                    } else {
+                        imageLink = volumeInfo.imageLinks.smallThumbnail;
+                    }
+                    {/* Check Authors */}
+                    let authors;
+                    if (!volumeInfo.authors) {
+                        authors = 'unknown';
+                    } else {
+                        authors = volumeInfo.authors.join(', ');
+                    }
+                    {/* Check Synopsis */}
+                    let synopsis;
+                    if (volumeInfo.description === undefined) {
+                        synopsis = 'No description';
+                    } else {
+                        synopsis = volumeInfo.description;   
+                    }
+                   return <Book 
+                        key={id}
+                        title={volumeInfo.title}
+                        authors={authors}
+                        link={volumeInfo.infoLink}
+                        image={imageLink}
+                        synopsis={synopsis}
+                    />
+                })}
+          </Col>
+        </Row>
+      </Container>
+    </main>
   );
 }
 

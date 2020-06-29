@@ -1,0 +1,5 @@
+.start-search,
+.start-search:hover {
+    color: blue;
+    text-decoration: underline;
+}

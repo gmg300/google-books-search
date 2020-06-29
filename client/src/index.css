@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .form-control:focus {
   box-shadow: none;
 }

@@ -6,6 +6,10 @@ nav a.navbar-brand {
   color: white;
 }
 
+span.navbar-toggler-icon {
+  color: white!important;
+}
+
 .nav-link {
   color: rgba(255, 255, 255, .5);
 }

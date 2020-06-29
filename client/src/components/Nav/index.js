@@ -5,7 +5,7 @@ import './style.css';
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg navbar-dark">
       <Link className="navbar-brand" to="/">
         Google Books Search
       </Link>

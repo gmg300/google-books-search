@@ -10,9 +10,13 @@ function Search() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    API.searchBooks(search).then((res) => {
-      setBooks(res.data.items);
-    });
+    if (search.trim() === '') {
+      return
+    } else {
+      API.searchBooks(search).then((res) => {
+        setBooks(res.data.items);
+      });
+    }
   }, [search]);
 
   function renderBooks() {

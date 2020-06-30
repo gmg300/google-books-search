@@ -1,8 +1,11 @@
 .card {
-  /* max-height: 450px;   */
   box-shadow: 0 8px 10px 0px gray;
-  border: 10px solid #DB4437;
+  border: 10px solid #4285F4;
   padding: 1rem;
+}
+
+.card-img {
+  width: 75%;
 }
 
 .card-col {
@@ -17,7 +20,7 @@
 /* MEDIA QUERIES */
 @media only screen and (max-width: 576px) {
   .card-img  {
-    width: 50%;
+    width: 40%;
   }
 }
 

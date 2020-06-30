@@ -22,6 +22,16 @@ function Saved() {
         <Row>
           <Col>
             <NoResults books={books}/>
+            {books.map(book => {
+                   return <Book 
+                        key={book._id}
+                        title={book.title}
+                        authors={book.authors}
+                        link={book.link}
+                        image={book.image}
+                        synopsis={book.synopsis}
+                    />
+                })}
           </Col>
         </Row>
       </Container>

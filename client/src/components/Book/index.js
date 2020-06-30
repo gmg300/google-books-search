@@ -21,7 +21,7 @@ function Book({ title, authors, link, image, synopsis }) {
             <a className="btn btn-primary" href={link} target="_blank">
               View
             </a>
-            <button className={pathname === '/search' ? 'btn btn-primary' : 'd-none'}>Save</button>
+            <button className={pathname === '/saved' ? 'd-none' : 'btn btn-primary'}>Save</button>
           </p>
         </div>
       </div>

@@ -8,9 +8,9 @@ import RemoveBtn from '../RemoveBtn';
 
 function Book({ title, authors, link, image, synopsis, id, googleId }) {
 
-  async function saveBook(id) {
+  async function saveBook(googleId) {
     try {
-      const res = await API.searchBooksById(id);
+      const res = await API.searchBooksById(googleId);
       API.saveBook({
         title: res.data.volumeInfo.title,
         authors: res.data.volumeInfo.authors,
@@ -24,8 +24,12 @@ function Book({ title, authors, link, image, synopsis, id, googleId }) {
     }
   }
 
-  function removeBook(id) {
-
+  async function removeBook(id) {
+    try {
+      API.deleteBook(id);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -40,7 +44,7 @@ function Book({ title, authors, link, image, synopsis, id, googleId }) {
           <p className="card-text">{synopsis}</p>
           <p className="card-text">
             <ViewBtn link={link}/>
-            <SaveBtn id={googleId} saveBook={saveBook}/>
+            <SaveBtn googleId={googleId} saveBook={saveBook}/>
             <RemoveBtn id={id} removeBook={removeBook} />
           </p>
         </div>

@@ -12,7 +12,23 @@ function Saved() {
     API.getSavedBooks().then((res) => {
       setSavedBooks(res.data);
     });
-  }, []);
+  }, [savedBooks]);
+
+  function renderBooks() {
+    return savedBooks.map((book, i) => {
+      return (
+        <Book
+          key={i}
+          id={book._id}
+          title={book.title}
+          authors={book.authors}
+          link={book.link}
+          image={book.image}
+          synopsis={book.synopsis}
+        />
+      );
+    });
+  }
 
   return (
     <main>
@@ -21,19 +37,7 @@ function Saved() {
         <Row>
           <Col>
             <NoResults books={savedBooks} />
-            {savedBooks.map((book, i) => {
-              return (
-                <Book
-                  key={i}
-                  id={book._id}
-                  title={book.title}
-                  authors={book.authors}
-                  link={book.link}
-                  image={book.image}
-                  synopsis={book.synopsis}
-                />
-              );
-            })}
+            {renderBooks()}
           </Col>
         </Row>
       </Container>

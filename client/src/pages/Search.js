@@ -15,6 +15,40 @@ function Search() {
     });
   }, [search]);
 
+  function renderBooks() {
+    return books.map(({ volumeInfo, id }, i) => {
+      let imageLink;
+      if (!volumeInfo.imageLinks) {
+        imageLink = "no image";
+      } else {
+        imageLink = volumeInfo.imageLinks.smallThumbnail;
+      }
+      let authors;
+      if (!volumeInfo.authors) {
+        authors = "unknown";
+      } else {
+        authors = volumeInfo.authors.join(", ");
+      }
+      let synopsis;
+      if (volumeInfo.description === undefined) {
+        synopsis = "No description";
+      } else {
+        synopsis = volumeInfo.description;
+      }
+      return (
+        <Book
+          key={i}
+          googleId={id}
+          title={volumeInfo.title}
+          authors={authors}
+          link={volumeInfo.infoLink}
+          image={imageLink}
+          synopsis={synopsis}
+        />
+      );
+    });
+  }
+
   function handleInputChange(event) {
     const { value } = event.target;
     setSearch(value);
@@ -42,37 +76,7 @@ function Search() {
         <Row>
           <Col>
             <NoResults books={books} />
-            {books.map(({ volumeInfo, id }, i) => {
-              let imageLink;
-              if (!volumeInfo.imageLinks) {
-                imageLink = "no image";
-              } else {
-                imageLink = volumeInfo.imageLinks.smallThumbnail;
-              }
-              let authors;
-              if (!volumeInfo.authors) {
-                authors = "unknown";
-              } else {
-                authors = volumeInfo.authors.join(", ");
-              }
-              let synopsis;
-              if (volumeInfo.description === undefined) {
-                synopsis = "No description";
-              } else {
-                synopsis = volumeInfo.description;
-              }
-              return (
-                <Book
-                  key={i}
-                  googleId={id}
-                  title={volumeInfo.title}
-                  authors={authors}
-                  link={volumeInfo.infoLink}
-                  image={imageLink}
-                  synopsis={synopsis}
-                />
-              );
-            })}
+            {renderBooks()}
           </Col>
         </Row>
       </Container>

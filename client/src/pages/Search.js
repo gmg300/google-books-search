@@ -11,9 +11,7 @@ function Search() {
 
   useEffect(() => {
     API.searchBooks(search).then((res) => {
-      console.log(res.data)
       setBooks(res.data.items);
-      console.log("set books", books)
     });
   }, [search]);
 
@@ -43,35 +41,38 @@ function Search() {
         </Row>
         <Row>
           <Col>
-          <NoResults books={books}/>
-          {books.map(({volumeInfo}, {id}) => {
-                    let imageLink;
-                    if (!volumeInfo.imageLinks) {
-                        imageLink = "no image";
-                    } else {
-                        imageLink = volumeInfo.imageLinks.smallThumbnail;
-                    }
-                    let authors;
-                    if (!volumeInfo.authors) {
-                        authors = 'unknown';
-                    } else {
-                        authors = volumeInfo.authors.join(', ');
-                    }
-                    let synopsis;
-                    if (volumeInfo.description === undefined) {
-                        synopsis = 'No description';
-                    } else {
-                        synopsis = volumeInfo.description;   
-                    }
-                   return <Book 
-                        key={id}
-                        title={volumeInfo.title}
-                        authors={authors}
-                        link={volumeInfo.infoLink}
-                        image={imageLink}
-                        synopsis={synopsis}
-                    />
-                })}
+            <NoResults books={books} />
+            {books.map(({ volumeInfo, id }) => {
+              let imageLink;
+              if (!volumeInfo.imageLinks) {
+                imageLink = "no image";
+              } else {
+                imageLink = volumeInfo.imageLinks.smallThumbnail;
+              }
+              let authors;
+              if (!volumeInfo.authors) {
+                authors = "unknown";
+              } else {
+                authors = volumeInfo.authors.join(", ");
+              }
+              let synopsis;
+              if (volumeInfo.description === undefined) {
+                synopsis = "No description";
+              } else {
+                synopsis = volumeInfo.description;
+              }
+              return (
+                <Book
+                  key={id}
+                  id={id}
+                  title={volumeInfo.title}
+                  authors={authors}
+                  link={volumeInfo.infoLink}
+                  image={imageLink}
+                  synopsis={synopsis}
+                />
+              );
+            })}
           </Col>
         </Row>
       </Container>

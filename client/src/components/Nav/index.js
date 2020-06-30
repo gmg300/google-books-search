@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './style.css';
 
 
 function Nav() {
+
+  const { pathname } = useLocation();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link className="navbar-brand" to="/">
@@ -22,12 +25,12 @@ function Nav() {
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
+          <li className={pathname === "/search" || pathname === "/" ? "nav-item active" : "nav-item"}>
             <Link className="nav-link" to="/search">
-              Search <span className="sr-only">(current)</span>
+              Search 
             </Link>
           </li>
-          <li className="nav-item">
+          <li className={pathname === "/saved" ? "nav-item active" : "nav-item"}>
             <Link className="nav-link" to="/saved">
               Saved
             </Link>

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Book from '../components/Book';
+import Book from "../components/Book";
 import API from "../utils/API";
 import NoResults from "../components/NoResults";
 
 function Saved() {
-  const [books, setBooks] = useState([]);
-  
+  const [savedBooks, setSavedBooks] = useState([]);
+
   useEffect(() => {
-    API.getSavedBooks()
-      .then(res => {
-        setBooks(res.data)
-      });
+    API.getSavedBooks().then((res) => {
+      setSavedBooks(res.data);
+    });
   }, []);
 
   return (
@@ -21,17 +20,20 @@ function Saved() {
       <Container>
         <Row>
           <Col>
-            <NoResults books={books}/>
-            {books.map(book => {
-                   return <Book 
-                        key={book._id}
-                        title={book.title}
-                        authors={book.authors}
-                        link={book.link}
-                        image={book.image}
-                        synopsis={book.synopsis}
-                    />
-                })}
+            <NoResults books={savedBooks} />
+            {savedBooks.map((book) => {
+              return (
+                <Book
+                  key={book._id}
+                  id={book._id}
+                  title={book.title}
+                  authors={book.authors}
+                  link={book.link}
+                  image={book.image}
+                  synopsis={book.synopsis}
+                />
+              );
+            })}
           </Col>
         </Row>
       </Container>

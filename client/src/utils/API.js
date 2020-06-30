@@ -5,6 +5,9 @@ export default {
   searchBooks: function(search) {
     return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + search);
   },
+  searchBooksById: function(id) {
+    return axios.get("https://www.googleapis.com/books/v1/volumes/" + id)
+  },
   // Get all saved books
   getSavedBooks: function() {
     return axios.get("/api/books");

@@ -17,12 +17,15 @@ const bookSchema = new Schema({
     required: true,
   },
   image: {
-    type: String,
-    required: true,
+    type: String
   },
   synopsis: {
+    type: String
+  },
+  googleId: {
     type: String,
     required: true,
+    unique: true
   },
   date: { 
     type: Date,

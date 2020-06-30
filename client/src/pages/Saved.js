@@ -21,10 +21,10 @@ function Saved() {
         <Row>
           <Col>
             <NoResults books={savedBooks} />
-            {savedBooks.map((book) => {
+            {savedBooks.map((book, i) => {
               return (
                 <Book
-                  key={book._id}
+                  key={i}
                   id={book._id}
                   title={book.title}
                   authors={book.authors}

@@ -42,7 +42,7 @@ function Search() {
         <Row>
           <Col>
             <NoResults books={books} />
-            {books.map(({ volumeInfo, id }) => {
+            {books.map(({ volumeInfo, id }, i) => {
               let imageLink;
               if (!volumeInfo.imageLinks) {
                 imageLink = "no image";
@@ -63,8 +63,8 @@ function Search() {
               }
               return (
                 <Book
-                  key={id}
-                  id={id}
+                  key={i}
+                  googleId={id}
                   title={volumeInfo.title}
                   authors={authors}
                   link={volumeInfo.infoLink}

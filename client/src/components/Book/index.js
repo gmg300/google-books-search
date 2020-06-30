@@ -6,7 +6,7 @@ import ViewBtn from '../ViewBtn';
 import SaveBtn from '../SaveBtn';
 import RemoveBtn from '../RemoveBtn';
 
-function Book({ title, authors, link, image, synopsis, id }) {
+function Book({ title, authors, link, image, synopsis, id, googleId }) {
 
   async function saveBook(id) {
     try {
@@ -17,13 +17,16 @@ function Book({ title, authors, link, image, synopsis, id }) {
         link: res.data.volumeInfo.infoLink,
         image: res.data.volumeInfo.imageLinks.smallThumbnail,
         synopsis: res.data.volumeInfo.description,
+        googleId: res.data.id
       });
     } catch (err) {
       console.log(err);
     }
   }
 
-  function removeBook(id) {}
+  function removeBook(id) {
+
+  }
 
   return (
     <div className="card mb-3">
@@ -37,7 +40,7 @@ function Book({ title, authors, link, image, synopsis, id }) {
           <p className="card-text">{synopsis}</p>
           <p className="card-text">
             <ViewBtn link={link}/>
-            <SaveBtn id={id} saveBook={saveBook}/>
+            <SaveBtn id={googleId} saveBook={saveBook}/>
             <RemoveBtn id={id} removeBook={removeBook} />
           </p>
         </div>

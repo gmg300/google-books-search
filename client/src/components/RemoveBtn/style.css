@@ -1,0 +1,20 @@
+.btn {
+    margin: 0.5rem;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn.btn-primary.remove {
+  background-color: #ed9d97;
+  border-color: #ed9d97;
+}
+
+.btn.btn-primary.remove:hover,
+.btn.btn-primary.remove:active {
+  background-color: #db4437;
+  border-color: #db4437;
+}

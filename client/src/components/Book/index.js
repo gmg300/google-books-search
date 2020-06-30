@@ -1,27 +1,29 @@
 import React from "react";
 import "./style.css";
-import API from '../../utils/API';
+import API from "../../utils/API";
 import noImg from '../../images/no-image.png';
-import { useLocation } from 'react-router-dom';
+import ViewBtn from '../ViewBtn';
+import SaveBtn from '../SaveBtn';
+import RemoveBtn from '../RemoveBtn';
 
 function Book({ title, authors, link, image, synopsis, id }) {
 
-  const { pathname } = useLocation();
-
   async function saveBook(id) {
     try {
-      const res = await API.searchBooksById(id)
+      const res = await API.searchBooksById(id);
       API.saveBook({
         title: res.data.volumeInfo.title,
         authors: res.data.volumeInfo.authors,
         link: res.data.volumeInfo.infoLink,
         image: res.data.volumeInfo.imageLinks.smallThumbnail,
-        synopsis: res.data.volumeInfo.description
-      })
-    } catch(err) {
-      console.log(err)
+        synopsis: res.data.volumeInfo.description,
+      });
+    } catch (err) {
+      console.log(err);
     }
   }
+
+  function removeBook(id) {}
 
   return (
     <div className="card mb-3">
@@ -34,10 +36,9 @@ function Book({ title, authors, link, image, synopsis, id }) {
           <p>{authors}</p>
           <p className="card-text">{synopsis}</p>
           <p className="card-text">
-            <a className="btn btn-primary" href={link} target="_blank" rel="noopener noreferrer">
-              View
-            </a>
-            <button className={pathname === '/saved' ? 'd-none' : 'btn btn-primary'} onClick={() => saveBook(id)}>Save</button>
+            <ViewBtn link={link}/>
+            <SaveBtn id={id} saveBook={saveBook}/>
+            <RemoveBtn id={id} removeBook={removeBook} />
           </p>
         </div>
       </div>

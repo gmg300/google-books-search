@@ -11,7 +11,7 @@ function Saved() {
   useEffect(() => {
     API.getSavedBooks()
       .then(res => {
-        setBooks(res.data);
+        setBooks(res.data)
       });
   }, []);
 

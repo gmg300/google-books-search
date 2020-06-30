@@ -11,7 +11,9 @@ function Search() {
 
   useEffect(() => {
     API.searchBooks(search).then((res) => {
+      console.log(res.data)
       setBooks(res.data.items);
+      console.log("set books", books)
     });
   }, [search]);
 
@@ -27,12 +29,12 @@ function Search() {
         <Row>
           <Col>
             <form>
-              <div class="form-group mb-4">
+              <div className="form-group mb-4">
                 <input
                   id="exampleFormControlInput1"
                   type="email"
                   placeholder="Find books..."
-                  class="form-control form-control-underlined"
+                  className="form-control form-control-underlined"
                   onChange={handleInputChange}
                 />
               </div>
@@ -43,21 +45,18 @@ function Search() {
           <Col>
           <NoResults books={books}/>
           {books.map(({volumeInfo}, {id}) => {
-                    {/* Check Image */}
                     let imageLink;
                     if (!volumeInfo.imageLinks) {
                         imageLink = "no image";
                     } else {
                         imageLink = volumeInfo.imageLinks.smallThumbnail;
                     }
-                    {/* Check Authors */}
                     let authors;
                     if (!volumeInfo.authors) {
                         authors = 'unknown';
                     } else {
                         authors = volumeInfo.authors.join(', ');
                     }
-                    {/* Check Synopsis */}
                     let synopsis;
                     if (volumeInfo.description === undefined) {
                         synopsis = 'No description';

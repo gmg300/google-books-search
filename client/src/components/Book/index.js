@@ -14,7 +14,7 @@ export default function Book({
   image,
   synopsis,
   id,
-  googleId,
+  googleId
 }) {
   const history = useHistory();
   const [isSaving, setIsSaving] = useState(false);
@@ -46,6 +46,7 @@ export default function Book({
       setIsRemoving(true);
       const res = API.deleteBook(id);
       setIsRemoving(false);
+      history.go()
     } catch (err) {
       setIsRemoving(false);
       console.log(err);
@@ -55,7 +56,7 @@ export default function Book({
   // Google Books API search by ID seems to return the description with HTML tags included
   // Strip the tags before saving to MongoDB - https://www.w3resource.com/javascript-exercises/javascript-string-exercise-35.php
   function stripHTMLTags(str) {
-    if (str === null || str === "") return false;
+    if (str === null || str === "" || str === undefined) return "No description";
     else str = str.toString();
     return str.replace(/<[^>]*>/g, "");
   }

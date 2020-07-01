@@ -12,7 +12,7 @@ export default function Saved() {
     API.getSavedBooks().then((res) => {
       setSavedBooks(res.data);
     });
-  }, [savedBooks]);
+  }, []);
 
   function renderBooks() {
     return savedBooks.map((book, i) => {

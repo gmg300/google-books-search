@@ -11,7 +11,7 @@ export default function RemoveBtn({ id, removeBook, isRemoving }) {
       onClick={() => removeBook(id)}
       disabled={isRemoving}
     >
-      Remove
+      {isRemoving ? "Removing..." : "Remove"}
     </button>
   );
 }

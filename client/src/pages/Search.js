@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-import Jumbotron from "../components/Jumbotron";
-import Book from "../components/Book";
 import { Col, Row, Container } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron";
+import SearchBar from "../components/SearchBar";
+import Book from "../components/Book";
 import NoResults from "../components/NoResults";
+
 
 function Search() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if (search.trim() === '') {
-      return
+    if (search.trim() === "") {
+      return;
     } else {
       API.searchBooks(search).then((res) => {
         setBooks(res.data.items);
@@ -61,29 +63,19 @@ function Search() {
   return (
     <main>
       <Jumbotron />
-      <Container>
-        <Row>
-          <Col>
-            <form>
-              <div className="form-group mb-4">
-                <input
-                  id="exampleFormControlInput1"
-                  type="email"
-                  placeholder="Find books..."
-                  className="form-control form-control-underlined"
-                  onChange={handleInputChange}
-                />
-              </div>
-            </form>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <NoResults books={books} />
-            {renderBooks()}
-          </Col>
-        </Row>
-      </Container>
+        <Container>
+          <Row>
+            <Col>
+              <SearchBar handleInputChange={handleInputChange} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <NoResults books={books} />
+              {renderBooks()}
+            </Col>
+          </Row>
+        </Container>
     </main>
   );
 }

@@ -5,7 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import Book from "../components/Book";
 import NoResults from "../components/NoResults";
 
-function Saved() {
+export default function Saved() {
   const [savedBooks, setSavedBooks] = useState([]);
 
   useEffect(() => {
@@ -44,5 +44,3 @@ function Saved() {
     </main>
   );
 }
-
-export default Saved;

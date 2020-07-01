@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './style.css';
 
 
-function Nav() {
+export default function Nav() {
 
   const { pathname } = useLocation();
 
@@ -40,5 +40,3 @@ function Nav() {
     </nav>
   );
 }
-
-export default Nav;

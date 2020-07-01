@@ -7,7 +7,7 @@ import Book from "../components/Book";
 import NoResults from "../components/NoResults";
 
 
-function Search() {
+export default function Search() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -80,4 +80,3 @@ function Search() {
   );
 }
 
-export default Search;

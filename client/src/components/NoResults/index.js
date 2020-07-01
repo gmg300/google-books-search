@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './style.css';
 
-function NoResults({ books }) {
+export default function NoResults({ books }) {
 
     const { pathname } = useLocation();
 
@@ -13,5 +13,3 @@ function NoResults({ books }) {
         </div>
     );
 }
-
-export default NoResults;

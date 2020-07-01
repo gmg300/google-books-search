@@ -6,7 +6,7 @@ import ViewBtn from '../ViewBtn';
 import SaveBtn from '../SaveBtn';
 import RemoveBtn from '../RemoveBtn';
 
-function Book({ title, authors, link, image, synopsis, id, googleId }) {
+export default function Book({ title, authors, link, image, synopsis, id, googleId }) {
 
   async function saveBook(googleId) {
     try {
@@ -52,5 +52,3 @@ function Book({ title, authors, link, image, synopsis, id, googleId }) {
     </div>
   );
 }
-
-export default Book;

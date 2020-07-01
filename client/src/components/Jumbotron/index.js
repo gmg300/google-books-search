@@ -4,7 +4,8 @@ import BooksImg from "../../images/books-background.jpg";
 import { useLocation } from  'react-router-dom';
 
 
-function Jumbotron() {
+
+export default function Jumbotron() {
   
   const { pathname } = useLocation();
 
@@ -18,4 +19,3 @@ function Jumbotron() {
   );
 }
 
-export default Jumbotron;

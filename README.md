@@ -1,20 +1,26 @@
-# Create React Express App
+# Google Books Search
 
-## About This Boilerplate
+## Description
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+MERN stack app that allows users to search the Google Books API for new and interesting books. Users can save the books to a list for future use and view them on Google's website.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Table of Contents
 
-## Starting the app locally
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Credits](#credits)
+- [License](#license)
+- [Questions](#questions)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Installation (for local use)
+
+Navigate to the app's root folder and install dependencies by running the following command in your terminal:
 
 ```
 npm install
 ```
-
-This should install node modules within the server and the client folder.
 
 After both installations complete, run the following command in your terminal:
 
@@ -22,8 +28,34 @@ After both installations complete, run the following command in your terminal:
 npm start
 ```
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+Your app should now be running on http://localhost:3000.
 
-## Deployment (Heroku)
+## Usage
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+<img alt="Google Books Search gif" src="assets/google-books-search.gif" width="100%">
+
+## Contributing
+
+There are currently no guidelines for contributing, fork and edit to your hearts content.
+
+## Tests
+
+There are currently no tests for this app.
+
+## Credits
+
+- [gmg300](https://github.com/gmg300)
+
+![MongoDB](https://img.shields.io/badge/Made%20with-MongoDB-blue.svg) ![Mongoose](https://img.shields.io/badge/Made%20with-Mongoose-blueviolet.svg) ![Express](https://img.shields.io/badge/Made%20with-Express-blueviolet.svg) ![React](https://img.shields.io/badge/Made%20with-React-ff69b4.svg) ![Node](https://img.shields.io/badge/Made%20with-Node-yellow.svg) ![Axios](https://img.shields.io/badge/Made%20with-Axios-orange.svg) ![Google%20Books%20API](https://img.shields.io/badge/Made%20with-Google%20Books%20API-yellow.svg)
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Copyright &copy;2020 Garrett Gassensmith
+
+## Questions
+
+  <img alt="Photo of Garrett Gassensmith" src="https://avatars2.githubusercontent.com/u/25697564?v=4" width="25%">
+  
+  For questions or feedback email me at garrettgassensmith@gmail.com

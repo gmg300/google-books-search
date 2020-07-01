@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const path = require("path");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes)
 
 // ====== DATABASE ======
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds261817.mlab.com:61817/heroku_bc2chltk");
 
 
 app.listen(PORT, () => {
